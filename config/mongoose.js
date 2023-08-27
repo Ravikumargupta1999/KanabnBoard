@@ -1,0 +1,20 @@
+// require the library
+const mongoose =  require('mongoose');
+
+
+// connect to databse
+// mongoose.connect('mongodb://0.0.0.0:27017/contact_list_db')
+mongoose.connect('mongodb://127.0.0.1:27017/kanban_task_db')
+
+// acquire the connection to check if it is successfull
+const db = mongoose.connection;
+
+
+// error
+db.on('error',console.error.bind(console,'error connecting to db'));
+
+
+// up and running then print the message
+db.once('open',function(){
+    console.log('Successfully connected to database')
+})
